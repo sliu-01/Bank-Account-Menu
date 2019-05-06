@@ -1,3 +1,5 @@
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,44 +21,45 @@ public class AddingAccounts extends JPanel
 	final double FREE_TRANSACTIONS = 10;
 	
 	public AddingAccounts(ArrayList<BankAccount> accounts)
-	{
-		this.setBounds(300, 200, 600, 400);
-		this.setLayout(null);
+	{	
+		this.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridx = 0;
+		c.gridy = 0;
 		
-		JLabel name = new JLabel("Name: ");
-		name.setSize(150, 20);
-		name.setLocation(new Point(10, 10));
-		this.add(name);
+		JLabel name = new JLabel("Name:   ");
+		this.add(name, c);
 		
-		JTextField nameInput = new JTextField();
-		nameInput.setSize(150, 30);
-		nameInput.setLocation(new Point(60, 10));
+		JTextField nameInput = new JTextField(12);
+		c.gridx = 1;
+		c.gridy = 0;
 		this.add(nameInput);
 		
-		JLabel accountType = new JLabel("Account Type: ");
-		accountType.setSize(150, 20);
-		accountType.setLocation(new Point(10, 50));
-		this.add(accountType);
+		JLabel accountType = new JLabel("Account Type:   ");
+		c.gridx = 0;
+		c.gridy = 1;
+		this.add(accountType, c);
 		
 		String[] choices = {"", "Checking", "Savings"};
 		JComboBox accountTypeChoice = new JComboBox(choices);
-		accountTypeChoice.setSize(150, 30);
-		accountTypeChoice.setLocation(new Point(100, 50));
-		this.add(accountTypeChoice);
-		
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 1;
+		c.gridy = 1;
+		this.add(accountTypeChoice,c);
+		/**
 		JLabel initialBalance = new JLabel("Initial Balance: ");
 		initialBalance.setSize(150, 20);
-		initialBalance.setLocation(new Point(10, 90));
+		initialBalance.setLocation(10, 90);
 		this.add(initialBalance);
 		
 		JTextField initialBalanceInput = new JTextField();
 		initialBalanceInput.setSize(150, 30);
-		initialBalanceInput.setLocation(new Point(105, 90));
+		initialBalanceInput.setLocation(105, 90);
 		this.add(initialBalanceInput);
 		
 		JButton createAccount = new JButton("Create Account");
 		createAccount.setSize(150, 30);
-		createAccount.setLocation(new Point(20, 130));
+		createAccount.setLocation(20, 130);
 		createAccount.addActionListener(new ActionListener()
 				{
 					public void actionPerformed(ActionEvent e) 
@@ -75,5 +78,6 @@ public class AddingAccounts extends JPanel
 					}
 				});
 		this.add(createAccount);
+		**/
 	}
 }
