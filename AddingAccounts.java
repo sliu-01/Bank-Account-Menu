@@ -1,6 +1,5 @@
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -42,24 +41,24 @@ public class AddingAccounts extends JPanel
 		
 		String[] choices = {"", "Checking", "Savings"};
 		JComboBox accountTypeChoice = new JComboBox(choices);
-		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 1;
 		c.gridy = 1;
 		this.add(accountTypeChoice,c);
-		/**
-		JLabel initialBalance = new JLabel("Initial Balance: ");
-		initialBalance.setSize(150, 20);
-		initialBalance.setLocation(10, 90);
-		this.add(initialBalance);
 		
-		JTextField initialBalanceInput = new JTextField();
-		initialBalanceInput.setSize(150, 30);
-		initialBalanceInput.setLocation(105, 90);
-		this.add(initialBalanceInput);
+		JLabel initialBalance = new JLabel("Initial Balance: ");
+		c.gridx = 0;
+		c.gridy = 2;
+		this.add(initialBalance, c);
+		
+		JTextField initialBalanceInput = new JTextField(15);
+		c.gridx = 1;
+		c.gridy = 2;
+		this.add(initialBalanceInput, c);
 		
 		JButton createAccount = new JButton("Create Account");
-		createAccount.setSize(150, 30);
-		createAccount.setLocation(20, 130);
+		c.gridwidth = 2;
+		c.gridx = 0;
+		c.gridy = 3;
 		createAccount.addActionListener(new ActionListener()
 				{
 					public void actionPerformed(ActionEvent e) 
@@ -77,7 +76,6 @@ public class AddingAccounts extends JPanel
 						accountTypeChoice.setSelectedItem("");
 					}
 				});
-		this.add(createAccount);
-		**/
+		this.add(createAccount, c);
 	}
 }
