@@ -21,8 +21,6 @@ public class BankAccountMenu extends JFrame
 	public BankAccountMenu()
 	{
 		this.setTitle("Bank Account Manager");
-		this.setBounds(300, 200, 600, 400);
-		this.setLayout(null);
 		
 		JPanel overall = new JPanel();
 		CardLayout cl = new CardLayout();
@@ -35,17 +33,32 @@ public class BankAccountMenu extends JFrame
 		JMenuBar menuBar = new JMenuBar();
 		this.setJMenuBar(menuBar);
 		
-		AddingAccounts addingAccountsPanel = new AddingAccounts(accounts);
-		overall.add(addingAccountsPanel, "Adding Accounts");
-		
 		JMenu account = new JMenu("Account Actions");
 		menuBar.add(account);
 		JMenuItem addAccount = new JMenuItem("Create an Account");
-		
 		account.add(addAccount);
+		
+		AddingAccounts addingAccountsPanel = new AddingAccounts(accounts);
+		overall.add(addingAccountsPanel, "Adding Accounts");
+		
+		
+		
+		
+		JMenu transactions = new JMenu("Transactions");
+		menuBar.add(transactions);
+		JMenuItem deposit = new JMenuItem("Deposit");
+		transactions.add(deposit);
+		JMenuItem withdraw = new JMenuItem("Withdraw");
+		transactions.add(withdraw);
+		JMenuItem transfer = new JMenuItem("Transfer");
+		transactions.add(transfer);
+		JMenuItem getBalance = new JMenuItem("Get Balance");
+		transactions.add(getBalance);
+		
+		JMenuItem homeTrigger = new JMenuItem("Home");
+		menuBar.add(homeTrigger);
 
 		this.add(overall);
-		
 		this.setBounds(100, 100, 600, 500);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
@@ -55,11 +68,21 @@ public class BankAccountMenu extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
-				cl.show(overall,  "Adding Accounts");
-				System.out.println("I");
+				cl.show(overall, "Adding Accounts");
 			}
 				
 		});
+		
+		homeTrigger.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e) 
+			{
+				cl.show(overall, "home");
+			}
+			
+		});
+		
 	}
 	
 	public static void main(String[] args) 
