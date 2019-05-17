@@ -29,10 +29,10 @@ public class AddingAccounts extends JPanel
 		JLabel name = new JLabel("Name:   ");
 		this.add(name, c);
 		
-		JTextField nameInput = new JTextField(12);
+		JTextField nameInput = new JTextField(15);
 		c.gridx = 1;
 		c.gridy = 0;
-		this.add(nameInput);
+		this.add(nameInput,c);
 		
 		JLabel accountType = new JLabel("Account Type:   ");
 		c.gridx = 0;
@@ -56,7 +56,6 @@ public class AddingAccounts extends JPanel
 		this.add(initialBalanceInput, c);
 		
 		JButton createAccount = new JButton("Create Account");
-		c.gridwidth = 2;
 		c.gridx = 0;
 		c.gridy = 3;
 		createAccount.addActionListener(new ActionListener()
@@ -77,5 +76,5 @@ public class AddingAccounts extends JPanel
 					}
 				});
 		this.add(createAccount, c);
-	}
+		}
 }
