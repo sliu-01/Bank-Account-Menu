@@ -35,29 +35,33 @@ public class BankAccountMenu extends JFrame
 		
 		JMenu account = new JMenu("Account Actions");
 		menuBar.add(account);
+		
 		JMenuItem addAccount = new JMenuItem("Create an Account");
 		account.add(addAccount);
-		
 		AddingAccounts addingAccountsPanel = new AddingAccounts(accounts);
 		overall.add(addingAccountsPanel, "Adding Accounts");
 		
-		
-		
-		
 		JMenu transactions = new JMenu("Transactions");
 		menuBar.add(transactions);
+		
 		JMenuItem deposit = new JMenuItem("Deposit");
 		transactions.add(deposit);
+		Deposit depositPanel = new Deposit(accounts);
+		overall.add(depositPanel, "Deposit");
+		
 		JMenuItem withdraw = new JMenuItem("Withdraw");
 		transactions.add(withdraw);
+		Withdraw withdrawPanel = new Withdraw(accounts);
+		overall.add(withdrawPanel, "Withdraw");
+		
 		JMenuItem transfer = new JMenuItem("Transfer");
 		transactions.add(transfer);
-		JMenuItem getBalance = new JMenuItem("Get Balance");
-		transactions.add(getBalance);
-		
+		Transfer transferPanel = new Transfer(accounts);
+		overall.add(transferPanel, "Transfer");
+
 		JMenuItem homeTrigger = new JMenuItem("Home");
 		menuBar.add(homeTrigger);
-
+		
 		this.add(overall);
 		this.setBounds(100, 100, 600, 500);
 		this.setVisible(true);
@@ -68,7 +72,34 @@ public class BankAccountMenu extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
-				cl.show(overall, "Adding Accounts");
+				cl.show(overall,  "Adding Accounts");
+			}
+				
+		});
+		deposit.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e) 
+			{
+				cl.show(overall,  "Deposit");
+			}
+				
+		});
+		withdraw.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e) 
+			{
+				cl.show(overall,  "Withdraw");
+			}
+				
+		});
+		transfer.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e) 
+			{
+				cl.show(overall,  "Transfer");
 			}
 				
 		});
@@ -78,11 +109,10 @@ public class BankAccountMenu extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
-				cl.show(overall, "home");
+				cl.show(overall,  "home");
 			}
-			
+				
 		});
-		
 	}
 	
 	public static void main(String[] args) 
